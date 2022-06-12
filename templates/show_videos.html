@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Prefixer</title>
+    <style>
+        body{
+        background-color: #222222;
+        color: #eeeeee;
+        letter-spacing: 0.35px;
+        padding: 0px;
+        margin: 0px;
+        }
+        a{
+        color: #CFCFCF;
+        text-decoration: underline;
+        }
+        a:visited{
+        color: #B6B6B6;
+        text-decoration: underline;
+        }
+        video{
+        position: fixed;
+        height: 97vh;
+        }
+        .center{
+        display: flex;
+        justify-content: center;
+        }
+        .butt{
+        height: 3vh;
+        margin-left: 41vw;
+        }
+        button{
+        height: 3vh;
+        width: 50px;
+        text-align: center;
+        }
+        .dn{
+        display: none;
+        }
+        .pdn{
+        display: none;
+        }
+    </style>
+</head>
+<body>
+<div class="butt">
+    <a href="#" onclick="previous()"><button><</button></a><!--{{url_for('previous')}}-->
+    <a href="#" onclick="delete_photo()"><button>X</button></a><!--{{url_for('delete')}}-->
+    <a href="#" onclick="underscore()"><button>_</button></a><!--{{url_for('underscore')}}-->
+    <a href="#" onclick="next()"><button>></button></a><!--{{url_for('next')}}-->
+    <a href="{{url_for('prefixer')}}" onmousedown="fastHide()"><button>Q</button></a>
+    <a href="{{url_for('move_video')}}"><button>M</button></a>
+    <a href="#" onclick="updatePhoto(getPhoto())"><button>R</button></a>
+</div>
+<div class="center"><video id="ima" controls autoplay muted onloadstart="this.playbackRate = 2.15" src="{{video}}?t=0"></video></div>
+
+<script src="{{url_for('js_vid')}}"></script>
+</body>
+</html>

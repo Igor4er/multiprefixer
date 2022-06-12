@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>auto random</title>
+    <style>
+        body{
+        background-color: #222222;
+        color: #eeeeee;
+        letter-spacing: 0.35px;
+        }
+        a{
+        color: #CFCFCF;
+        text-decoration: underline;
+        }
+        a:visited{
+        color: #B6B6B6;
+        text-decoration: underline;
+        }
+        .invis{
+        color: #222222;
+        }
+        .invis:visited{
+        color: #222222;
+        }
+        .mt{
+        margin-top: 45%;
+        }
+        .mta{
+        margin-top: 5%;
+        }
+    </style>
+</head>
+<body>
+<a href="{{url_for('index')}}"><- Повернутись</a>
+<br>
+<div class="mt"><a href="{{url_for('random_photo', directory_name=directory)}}" class="invis">Підтвердити фото</a></div>
+<div class="mta"><a href="{{url_for('random_video', directory_name=directory)}}" class="invis">Підтвердити відео</a></div>
+</body>
+</html>

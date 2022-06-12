@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List</title>
+    <style>
+        body{
+        background-color: #222222;
+        color: #eeeeee;
+        letter-spacing: 0.35px;
+        max-width: 100%;
+        //overflow-x: hidden;
+        }
+        a{
+        color: #CFCFCF;
+        text-decoration: none;
+        cursor: default;
+        }
+        a:visited{
+        color: #B6B6B6;
+        text-decoration: none;
+        cursor: default;
+        }
+        .it{
+        font-style: italic;
+        }
+        .hid{
+        display: none;
+        }
+        .img_container{
+        position: absolute;
+        z-index: 1;
+        margin-top: 20px;
+        pointer-events: none;
+        margin-right: -200px;
+        }
+        img{
+        height: 750px;
+        }
+        .sp{
+        display: inline-flex;
+        }
+        .md{
+        margin-bottom: 800px;
+        }
+        .nlink{
+        color: #CFCFCF;
+        cursor: pointer;
+        }
+        .nlink:visited{
+        color: #CFCFCF;
+        cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<a href="{{url_for('list_videos', directory_name=dir)}}" class="nlink"><h1>Список фото</h1></a>
+<a href="{{url_for('index')}}"><- Повернутись</a><br><br>
+<label for="prev">Preview: </label>
+<input type="checkbox" name="check" id="prev" value="False">
+Всього: <span class="it">{{len}}</span><br>
+{%for item in list%}
+<span onmouseover="showPreviewImage(this)" onmouseout="hidePreviewImage(this)" class="sp">
+    <a href="{{url_for('get_photo_by_name', name=item, directory_name=dir)}}" id="photo">{{item}}</a>,
+    <div class="hid" id="hidd"><img src="#" id="ima"></div>
+</span>
+{%endfor%}
+<div class="md"></div>
+<script src="{{url_for('list_js')}}"></script>
+</body>
+</html>

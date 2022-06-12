@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>by Ig4Er</title>
+    <style>
+        body{
+        background-color: #222222;
+        color: #eeeeee;
+        letter-spacing: 0.35px;
+        }
+        a{
+        color: #CFCFCF;
+        text-decoration: underline;
+        }
+        a:visited{
+        color: #B6B6B6;
+        text-decoration: underline;
+        }
+        .it{
+        font-style: italic;
+        }
+        button{
+        height: 3vh;
+        width: 75px;
+        text-align: center;
+        }
+        .e{
+        color: #dd4646;
+        }
+    </style>
+</head>
+<body>
+<h1>Photoprefixer</h1>
+<p>Директорія зараз: <span class="it">{{dir}}</span></p>
+<p>Позиція зараз: <span class="it">{{position}}</span></p>
+<p>Позиція відео зараз: <span class="it">{{vindex}}</span></p>
+<p>Перше відмічене відео: <span class="it">{{first_underscored_video_number}}</span></p>
+<p>Перше відмічене фото: <span class="it">{{first_underscored_photo_number}}</span></p>
+<br><br>
+<a href="{{url_for('prefixer')}}"><button>E</button></a><br>
+<a href="{{ url_for('edit') }}">Редагувати</a><br>
+<a href="{{ url_for('auto_list') }}">Список</a><br>
+<a href="{{ url_for('auto_random') }}">Random</a>
+<br><br>
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    {% for message in messages %}
+      <span class="e">{{ message }}</span>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+</body>
+</html>

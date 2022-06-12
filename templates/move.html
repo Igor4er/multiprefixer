@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Підтвердіть видалення</title>
+    <style>
+        body{
+        background-color: #222222;
+        color: #eeeeee;
+        letter-spacing: 0.35px;
+        }
+        a{
+        color: #CFCFCF;
+        text-decoration: underline;
+        }
+        a:visited{
+        color: #B6B6B6;
+        text-decoration: underline;
+        }
+        .invis{
+        color: #222222;
+        }
+        .invis:visited{
+        color: #222222;
+        }
+        .mt{
+        margin-top: 45%;
+        }
+    </style>
+</head>
+<body>
+<h1>Перемістити</h1>
+<a href="{{url_for('prefixer')}}"><- Повернутись</a>
+<br>
+<form method="post">
+    <p>
+        <label for="dir">Dir:</label>
+        <select name="dir">
+            {% for option in options %}
+            <option value="{{option}}">{{option}}</option>
+            {% endfor %}
+        </select>
+    </p>
+    <p>
+        <label for="underscore">Underscore? </label>
+        <input type="checkbox" name="underscore">
+    </p>
+    <p>
+        <input type="submit">
+    </p>
+</form>
+</body>
+</html>

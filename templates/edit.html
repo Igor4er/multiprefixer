@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Редагування параметрів</title>
+    <style>
+        body{
+        background-color: #222222;
+        color: #eeeeee;
+        letter-spacing: 0.35px;
+        }
+        a{
+        color: #CFCFCF;
+        text-decoration: underline;
+        }
+        a:visited{
+        color: #B6B6B6;
+        text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+<h1>Параметри перегляду</h1>
+<a href="{{url_for('index')}}"><- Повернутись</a>
+<form method="post">
+    <p>
+        <label for="dir">Директорія</label>
+        <select name="dir">
+            {%for directory in dirs%}
+            <option value="{{directory}}">{{directory}}</option>
+            {%endfor%}
+        </select>
+    </p>
+    <p>
+        <label for="position">Позиція</label>
+        <input type="text" name="position" value="{{value_index}}">
+    </p>
+    <p>
+        <label for="vindex">Позиція відео</label>
+        <input type="text" name="vindex" value="{{vindex}}">
+    </p>
+    <p>
+        <input type="submit">
+    </p>
+</form>
+</body>
+</html>

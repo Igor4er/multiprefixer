@@ -369,7 +369,7 @@ def get_all_videos(directory_name):
     path = os.path.join(path, "vid")
     try:
         list = os.listdir(path)
-    except FileNotFoundError as e:
+    except FileNotFoundError:
         list = ["FileNotFoundError.mp4"]
     for item in list:
         if not item.endswith("mp4"):

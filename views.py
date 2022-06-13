@@ -12,8 +12,8 @@ def index():
     dir = request.cookies.get("dir", "none")
     position = request.cookies.get("index", "none")
     vindex = request.cookies.get("vindex", "none")
-    first_underscored_video_number = get_first_underscored_video_number(request.cookies.get("dir", "none"))
-    first_underscored_photo_number = get_first_underscored_photo_number(request.cookies.get("dir", "none"))
+    first_underscored_video_number = get_first_underscored_video_number(dir)
+    first_underscored_photo_number = get_first_underscored_photo_number(dir)
     return render_template("index.html", dir=dir, position=position, vindex=vindex, first_underscored_video_number=first_underscored_video_number, first_underscored_photo_number=first_underscored_photo_number)
 
 

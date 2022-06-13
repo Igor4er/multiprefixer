@@ -41,7 +41,10 @@
 <a href="{{url_for('prefixer')}}"><button>E</button></a><br>
 <a href="{{ url_for('edit') }}">Редагувати</a><br>
 <a href="{{ url_for('auto_list') }}">Список</a><br>
-<a href="{{ url_for('auto_random') }}">Random</a>
+<a href="{{ url_for('auto_random') }}">Random</a><br>
+{% if dir != 'drop' %}
+<a href="{{ url_for('drop_dir') }}">Скинути</a>
+{% endif %}
 <br><br>
 {% with messages = get_flashed_messages() %}
   {% if messages %}

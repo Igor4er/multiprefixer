@@ -19,7 +19,11 @@ def index():
 
 @app.route("/edit", methods=["post", "get"])
 def edit():
-    dirs = get_all_dirs()
+    directory = request.cookies.get("dir", "none")
+    if directory != "drop":
+        dirs = get_all_dirs()
+    else:
+        dirs = ["drop"]
     value_index = request.cookies.get("index", "0")
     vindex = request.cookies.get("vindex", "0")
     resp = make_response(render_template("edit.html", dirs=dirs, value_index=value_index, vindex=vindex))
@@ -115,6 +119,8 @@ def get_video_by_index(index, directory_name):
 def get_photo_by_name(name, directory_name):
     path = os.path.join(BASE_DIR, directory_name)
     resp = make_response(send_from_directory(path, name, mimetype="image/jpeg"))
+    resp.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
+    resp.headers["Expires"] = "0"
     return resp
 
 
@@ -123,6 +129,8 @@ def get_video_by_name(name, directory_name):
     path = os.path.join(BASE_DIR, directory_name)
     path = os.path.join(path, "vid")
     resp = make_response(send_from_directory(path, name, mimetype="video/mp4"))
+    resp.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
+    resp.headers["Expires"] = "0"
     return resp
 
 
@@ -292,6 +300,18 @@ def move_video():
     return render_template("move.html", options=options)
 
 
+@app.route("/instant_drop")
+def drop_dir():
+    resp = make_response(redirect(url_for("blank_page")))
+    resp.set_cookie("dir", "drop", secure=True, samesite="Lax", httponly=True)
+    return resp
+
+
+@app.route("/blank")
+def blank_page():
+    return render_template("blank.html")
+
+
 @app.route("/script.js")
 def js():
     return send_from_directory(os.path.join(app.root_path, "static"), "script.js")
@@ -328,13 +348,16 @@ def underscored_photos():
 
 @app.errorhandler(HTTPException)
 def redirect_index(e):
-    flash(str(e) + " (" + request.url + ")")
+    flash(str(e.code) + " " + e.name + ": (" + request.url + ") [" + request.method + "]")
     return redirect(url_for('index'))
 
 
 def get_all_photos(directory_name):
     path = os.path.join(BASE_DIR, directory_name)
-    list = os.listdir(path)
+    try:
+        list = os.listdir(path)
+    except FileNotFoundError:
+        list = ["FileNotFoundError.jpg"]
     for item in list:
         if not item.endswith("jpg"):
             list.remove(item)
@@ -344,7 +367,10 @@ def get_all_photos(directory_name):
 def get_all_videos(directory_name):
     path = os.path.join(BASE_DIR, directory_name)
     path = os.path.join(path, "vid")
-    list = os.listdir(path)
+    try:
+        list = os.listdir(path)
+    except FileNotFoundError as e:
+        list = ["FileNotFoundError.mp4"]
     for item in list:
         if not item.endswith("mp4"):
             list.remove(item)

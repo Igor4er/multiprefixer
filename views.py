@@ -118,7 +118,7 @@ def get_video_by_index(index, directory_name):
 @app.route("/<name>_of_<directory_name>.jpg")
 def get_photo_by_name(name, directory_name):
     path = os.path.join(BASE_DIR, directory_name)
-    resp = make_response(send_from_directory(path, name, mimetype="image/jpg"))
+    resp = make_response(send_from_directory(path, name, mimetype="image/jpeg"))
     resp.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
     resp.headers["Expires"] = "0"
     return resp

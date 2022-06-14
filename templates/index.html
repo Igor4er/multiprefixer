@@ -33,8 +33,8 @@
 <body>
 <h1>Multiprefixer</h1>
 <p>Директорія зараз: <span class="it">{{dir}}</span></p>
-<p>Позиція зараз: <span class="it">{{position}}</span></p>
-<p>Позиція відео зараз: <span class="it">{{vindex}}</span></p>
+<p>Позиція зараз: <span class="it">{{position}}</span> {% if position|int < 0 %}<span class="e"><- Увага!</span>{% endif %}</p>
+<p>Позиція відео зараз: <span class="it">{{vindex}}</span> {% if vindex|int < 0 %}<span class="e"><- Увага!</span>{% endif %}</p>
 <p>Перше відмічене відео: <span class="it">{{first_underscored_video_number}}</span></p>
 <p>Перше відмічене фото: <span class="it">{{first_underscored_photo_number}}</span></p>
 <br><br>

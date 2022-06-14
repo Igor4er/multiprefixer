@@ -59,7 +59,7 @@
 Всього: <span class="it">{{len}}</span><br>
 {%for item in list%}
 <span onmouseover="showPreviewImage(this)" onmouseout="hidePreviewImage(this)" class="sp">
-    <a href="{{url_for('get_video_by_name', name=item, directory_name=dir)}}" id="photo" type="video/mp4">{{item}}</a>,
+    <a href="{{url_for('get_video_by_name', name=item, directory_name=dir)}}" id="photo">{{item}}</a>,
     <div class="hid" id="hidd"><video muted autoplay src="" id="ima"></video></div>
 </span>
 {%endfor%}

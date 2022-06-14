@@ -29,7 +29,7 @@
         .img_container{
         position: absolute; /*absolute*/
         z-index: 1;
-        /*margin-top: 20px;*/
+        margin-top: 20px;
         pointer-events: none;
         }
         video{
@@ -59,11 +59,12 @@
 Всього: <span class="it">{{len}}</span><br>
 {%for item in list%}
 <span onmouseover="showPreviewImage(this)" onmouseout="hidePreviewImage(this)" class="sp">
-    <a href="{{url_for('get_video_by_name', name=item, directory_name=dir)}}" id="photo">{{item}}</a>,
-    <div class="hid" id="hidd"><video muted autoplay src="#" id="ima"></video></div>
+    <a href="{{url_for('get_video_by_name', name=item, directory_name=dir)}}" id="photo" type="video/mp4">{{item}}</a>,
+    <div class="hid" id="hidd"><video muted autoplay src="" id="ima"></video></div>
 </span>
 {%endfor%}
 <div class="md"></div>
+
 <script src="{{url_for('list_js_vid')}}"></script>
 </body>
 </html>

@@ -62,7 +62,7 @@
 {%for item in list%}
 <span onmouseover="showPreviewImage(this)" onmouseout="hidePreviewImage(this)" class="sp">
     <a href="{{url_for('get_photo_by_name', name=item, directory_name=dir)}}" id="photo">{{item}}</a>,
-    <div class="hid" id="hidd"><img src="#" id="ima"></div>
+    <div class="hid" id="hidd"><img src="" id="ima"></div>
 </span>
 {%endfor%}
 <div class="md"></div>

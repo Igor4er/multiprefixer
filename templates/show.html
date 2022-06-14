@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Префіксер (фото)</title>
+    <title>Photoprefixer</title>
     <style>
         body{
         background-color: #222222;
@@ -20,8 +20,9 @@
         text-decoration: underline;
         }
         img{
-        position: fixed;
+        /*position: fixed;*/
         height: 97vh;
+        margin-top: 3vh;
         }
         .center{
         display: flex;
@@ -29,7 +30,10 @@
         }
         .butt{
         height: 3vh;
-        margin-left: 41vw;
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%);
+        /*margin-left: 38.9vw;*/
         }
         button{
         height: 3vh;
@@ -53,6 +57,7 @@
     <a href="{{url_for('index')}}" onmousedown="fastHide()"><button>Q</button></a>
     <a href="{{url_for('move')}}"><button>M</button></a>
     <a href="{{url_for('prefixer_video')}}"><button>V</button></a>
+    <a href="{{url_for('drop_dir')}}" onmousedown="fastHide()"><button>D</button></a>
 </div>
 <div class="center" onclick="updatePhoto(getPhoto())"><img src="{{photo}}?t=0" id="ima"></div>
 
